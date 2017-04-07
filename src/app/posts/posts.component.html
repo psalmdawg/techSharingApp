@@ -1,0 +1,58 @@
+<br>
+
+
+
+<form>
+
+<hr>
+<label for="">Add New Post...</label>
+<form class="" action="index.html" method="post" #f="ngForm">
+  <input type="text"
+    placeholder="Title"
+    id="title"
+    name="title"
+    ngModel
+    required >
+
+  <input type="text"
+    placeholder="Body"
+    ngModel
+    name="body"
+    required>
+
+  <select id="" ngModel name="category">
+    <option value="webdev">Web Development</option>
+    <option value="ng2">Angular 2</option>
+    <option value="graphicDesign">Graphic Design</option>
+    <option value="misc">Misc</option>
+  </select>
+
+  <input type="text"
+    placeholder="Add link..."
+    ngModel name="subjectUrl">
+
+  <button type="submit"
+    (click)="onSubmit(f)">Submit</button>
+</form>
+
+<div *ngIf="submitted">
+  <hr>
+  <h3>Title: {{article.title}} </h3>
+  <p>Body: {{article.body}}</p>
+  <div>Url: {{article.subjectUrl}}</div>
+  <div>Category: {{article.category}}</div>
+</div>
+
+<hr>
+
+<h1>Posts:</h1>
+<div *ngIf="!posts">no posts!</div>
+<div *ngIf="posts">there are posts!</div>
+
+<div *ngFor="let post of posts">
+  <h3>{{post.title}}</h3>
+  <p>{{post.body}}</p>
+  <label for="">{{post.category}}</label>
+  <!-- <iframe src=""></iframe> -->
+  <!-- <iframe width="300" height="200" src="{{post.subjectUrl}}"></iframe> -->
+</div>

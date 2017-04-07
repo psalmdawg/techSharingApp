@@ -1,3 +1,18 @@
 <h1>
   {{title}}
 </h1>
+<h4>{{challenge.scope}}</h4>
+<h4>Features: app should...</h4>
+<ul>
+  <li *ngFor="let feature of challenge.features">{{feature}}</li>
+</ul>
+
+<a href="/api">SEE THE DATA</a>
+
+
+
+
+
+<!-- <app-posts-form></app-posts-form>/ -->
+
+<app-posts></app-posts>
