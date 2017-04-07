@@ -1,1 +1,150 @@
 /* You can add global styles to this file, and also import other style files */
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+.main-ctr{
+	width: 90%;
+	margin: 0 auto;
+	padding: 5px;
+}
+body{
+	background: #E6E8ED;
+	font-family: verdana;
+}
+.post-ctr{
+  border: solid 1px #6F7174;
+	color: black;
+	padding: 5px;
+	margin: 10px;
+	/*position: relative;*/
+	z-index: -1;
+}
+.post-ctr:hover{
+	box-shadow: 1px 1px 1px grey;
+	cursor: pointer;
+}
+.posts-all-container{
+	width: 70%;
+	margin: 0 auto;
+	margin-top: 30px;
+}
+.post-title{
+	font-size: 15px;
+	font-weight: bold;
+	color: grey;
+}
+.post-body{
+	font-size: 12px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+.post-url{
+	font-size: 10px;
+	color: black
+}
+.post-url a{
+	font-size: 10px;
+	color: black;
+	text-decoration: none;
+}
+
+.form-ctr{
+	border-radius: 5px;
+	left: 13%;
+	background: #022370;
+	/*height: 300px;*/
+	position: absolute;
+	width: 75%;
+	margin: 0 auto;
+	z-index: 1;
+}
+
+.form-ctr input{
+	width: 95%;
+	height: 30px;
+	line-height: 30px;
+	font-size: 16px;
+}
+
+.custom-form{
+	/*width: 100%;*/
+	margin: 5px;
+	/*float: left;*/
+	padding: 10px;
+	background: #f1f1f1;
+}
+.form-header{
+	/*text-align: center;*/
+	font-weight: bold;
+}
+
+button{
+	background: -webkit-linear-gradient(rgb(120, 146, 194) 5%, rgb(71, 110, 158) 100%);
+	border-radius: 5px;
+  display: inline-block;
+  cursor: pointer;
+  color: rgb(255, 255, 255);
+  margin: 5px;
+  font-family: Arial;
+  font-size: 16px;
+  padding: 5px 20px;
+  text-decoration: none;
+  text-shadow: rg;
+}
+.delete-post{
+	float: right;
+	/*position: absolute;
+	right: 5px;
+	top: 1px;*/
+	cursor: pointer;
+}
+.delete-post:hover{
+	color: black;
+	transform:translateY(-1px);
+	transition: 0.1s
+}

@@ -1,58 +1,60 @@
 <br>
 
-
-
-<form>
-
-<hr>
-<label for="">Add New Post...</label>
-<form class="" action="index.html" method="post" #f="ngForm">
-  <input type="text"
-    placeholder="Title"
-    id="title"
-    name="title"
-    ngModel
-    required >
-
-  <input type="text"
-    placeholder="Body"
-    ngModel
-    name="body"
-    required>
-
-  <select id="" ngModel name="category">
-    <option value="webdev">Web Development</option>
-    <option value="ng2">Angular 2</option>
-    <option value="graphicDesign">Graphic Design</option>
-    <option value="misc">Misc</option>
-  </select>
-
-  <input type="text"
-    placeholder="Add link..."
-    ngModel name="subjectUrl">
-
-  <button type="submit"
-    (click)="onSubmit(f)">Submit</button>
-</form>
-
-<div *ngIf="submitted">
-  <hr>
-  <h3>Title: {{article.title}} </h3>
-  <p>Body: {{article.body}}</p>
-  <div>Url: {{article.subjectUrl}}</div>
-  <div>Category: {{article.category}}</div>
+<div class="submit-btn">
+  <button (click)="changeState('add')">Submit New Post</button>
 </div>
 
-<hr>
 
-<h1>Posts:</h1>
-<div *ngIf="!posts">no posts!</div>
-<div *ngIf="posts">there are posts!</div>
+<div class="form-ctr" *ngIf="appState == 'add' ">
 
-<div *ngFor="let post of posts">
-  <h3>{{post.title}}</h3>
-  <p>{{post.body}}</p>
-  <label for="">{{post.category}}</label>
-  <!-- <iframe src=""></iframe> -->
-  <!-- <iframe width="300" height="200" src="{{post.subjectUrl}}"></iframe> -->
+  <form class="" action="index.html" method="post" #f="ngForm">
+    <div class="custom-form form-header">
+      Submit a new post!
+    </div>
+    <div class="custom-form">
+      <input type="text"  placeholder="Title"  id="title" name="title"  ngModel  required >
+    </div>
+
+    <div class="custom-form">
+      <input type="text" placeholder="Body"  ngModel  name="body" required>
+    </div>
+
+    <div class="custom-form">
+      <select id="" ngModel name="category" required>
+        <option value="" disabled selected>Select Category...*</option>
+        <option value="lifestyle">Lifestyle</option>
+        <option value="travel">Travel</option>
+        <option value="video">Video</option>
+      </select>
+    </div>
+
+    <div class="custom-form">
+      <input type="text" placeholder="Add link..."  ngModel name="subjectUrl">
+    </div>
+
+    <div class="custom-form">
+      <button type="submit" (click)="onSubmit(f)">Submit</button>
+      <button (click)="changeState('default')">Cancel</button>
+    </div>
+
+  </form>
+
+
+</div>
+
+<div class="posts-all-container">
+  <div *ngFor="let post of posts">
+    <div class="post-ctr">
+      <div class="delete-post">&#10005;</div>
+      <h3 class="post-title">{{post.title}}</h3>
+      <div class="post-body">{{post.body}}</div>
+      <div class="post-url"><a href="{{post.url}}">link</a></div>
+      <!-- <div class="post-category">{{post.category}}</div> -->
+
+      <!-- <iframe src=""></iframe> -->
+      <!-- <iframe width="300" height="200" src="{{post.subjectUrl}}"></iframe> -->
+
+    </div>
+
+  </div>
 </div>

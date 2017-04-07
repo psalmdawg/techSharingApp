@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Post = require('../models/posts');
 const mongoose =require("mongoose");
+const _ = require('underscore');
 
 
 /* GET api listing. */
@@ -10,7 +11,11 @@ router.get('/', (req, res) => {
     if (err) {
         return res.send('Error!');
     }
-    return res.status(200).json(posts)
+    console.log(posts[0])
+    //underscore function to sortby time stamp
+    var sortedPosts = _.sortBy(posts, function(o) {return -o.created_at; })
+    console.log(sortedPosts[0])
+    return res.status(200).json(sortedPosts)
   });
 });
 
@@ -19,7 +24,7 @@ router.post('/', (req,res) => {
   var body = req.body.body;
   var category = req.body.category;
   var subjectUrl = req.body.subjectUrl;
-  var created_at = req.body.created_at;
+  var created_at = new Date().getTime()
 
 //validates title and body to ensure they exist
   req.checkBody('title', 'title is required').notEmpty();

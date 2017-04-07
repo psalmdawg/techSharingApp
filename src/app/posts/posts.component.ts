@@ -13,6 +13,8 @@ import { FormsModule } from '@angular/forms';
 })
 export class PostsComponent implements OnInit {
   posts:Posts[];
+  appState:string;
+  activeKey: string;
   @ViewChild('f') signupForm: NgForm;
   constructor(private postsService: PostsService){}
 
@@ -22,6 +24,15 @@ export class PostsComponent implements OnInit {
     .subscribe(posts => {
       this.posts = posts;
     })
+  }
+
+  changeState(state, key){
+    console.log('Changing state to: '+state);
+    // if(key){
+    //   console.log('Changing key to: '+key);
+    //   this.activeKey = key;
+    // }
+    this.appState = state;
   }
 
   article = {
@@ -35,21 +46,29 @@ export class PostsComponent implements OnInit {
 
 
   onSubmit(){
-    const created_at = new Date().toString();
 
     this.submitted = true;
     this.article.title = this.signupForm.value.title;
     this.article.body = this.signupForm.value.body;
     this.article.subjectUrl = this.signupForm.value.subjectUrl;
     this.article.category = this.signupForm.value.category;
-    this.article.created_at = created_at;
+
     this.signupForm.reset();
 
     var newPost =  this.article
 
     this.postsService.storePosts(newPost)
+    this.postsService.getPosts()
+    .subscribe(posts => {
+      this.posts = posts;
+      // console.log(posts);
+    })
+
+    this.appState = 'default';
 
   }
+
+
 
 
 }
