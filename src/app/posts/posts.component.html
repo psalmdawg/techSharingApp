@@ -1,31 +1,31 @@
 <br>
 
-<div class="submit-btn">
-  <button (click)="changeState('add')">Submit New Post</button>
-</div>
 
 
-<div class="form-ctr" *ngIf="appState == 'add' ">
+<div class="form-ctr" *ngIf="appState == 'add' " >
 
   <form class="" action="index.html" method="post" #f="ngForm">
     <div class="custom-form form-header">
       Submit a new post!
     </div>
     <div class="custom-form">
-      <input type="text"  placeholder="Title"  id="title" name="title"  ngModel  required >
+      <input type="text"  placeholder="Title.."  id="title" name="title"  ngModel #title="ngModel" required >
+      <p *ngIf="!title.valid && title.touched">Required value</p>
     </div>
 
     <div class="custom-form">
-      <input type="text" placeholder="Body"  ngModel  name="body" required>
+      <input type="text" placeholder="Body.."  ngModel  name="body" #body="ngModel" required>
+      <p *ngIf="!body.valid && body.touched">Required value</p>
     </div>
 
     <div class="custom-form">
-      <select id="" ngModel name="category" required>
+      <select id="" ngModel name="category" required #category="ngModel">
         <option value="" disabled selected>Select Category...*</option>
         <option value="lifestyle">Lifestyle</option>
         <option value="travel">Travel</option>
         <option value="video">Video</option>
       </select>
+      <p *ngIf="!category.valid && category.touched">Required value</p>
     </div>
 
     <div class="custom-form">
@@ -33,7 +33,7 @@
     </div>
 
     <div class="custom-form">
-      <button type="submit" (click)="onSubmit(f)">Submit</button>
+      <button type="submit" (click)="onSubmit(f)" [disabled]="!f.valid">Submit</button>
       <button (click)="changeState('default')">Cancel</button>
     </div>
 
@@ -43,17 +43,28 @@
 </div>
 
 <div class="posts-all-container">
+  <div class="submit-btn">
+    <button (click)="changeState('add')">Submit New Post</button>
+  </div>
+
   <div *ngFor="let post of posts">
     <div class="post-ctr">
-      <div class="delete-post">&#10005;</div>
-      <h3 class="post-title">{{post.title}}</h3>
+
+      <div class="delete-post" (click)="deletePost(post._id)"> &#10005;</div>
+      <h3 class="post-title">{{post.title}} </h3>
+      <!-- <div class="vote-up">&#8896;</div> -->
+
       <div class="post-body">{{post.body}}</div>
-      <div class="post-url"><a href="{{post.url}}">link</a></div>
-      <!-- <div class="post-category">{{post.category}}</div> -->
+      <!-- <div class="vote-down">&#8897;</div> -->
+      <div *ngIf="post.subjectUrl !== 'none' " class="post-url">
+        <a href="{{post.subjectUrl}}">{{post.subjectUrl}}</a>
 
-      <!-- <iframe src=""></iframe> -->
-      <!-- <iframe width="300" height="200" src="{{post.subjectUrl}}"></iframe> -->
 
+        <!-- <div class="post-category">{{post.category}}</div> -->
+
+        <!-- <iframe src=""></iframe> -->
+        <!-- <iframe width="300" height="200" src="{{post.subjectUrl}}"></iframe> -->
+      </div>
     </div>
 
   </div>

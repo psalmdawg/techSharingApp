@@ -5,12 +5,16 @@ import { Posts } from './posts.model';
 import { FormsModule } from '@angular/forms';
 
 
+
 @Component({
   selector: 'app-posts',
   templateUrl: './posts.component.html',
   styleUrls: ['./posts.component.css'],
   providers: [PostsService]
 })
+
+
+
 export class PostsComponent implements OnInit {
   posts:Posts[];
   appState:string;
@@ -18,8 +22,9 @@ export class PostsComponent implements OnInit {
   @ViewChild('f') signupForm: NgForm;
   constructor(private postsService: PostsService){}
 
+
   ngOnInit() {
-    // console.log('somethings')
+
     this.postsService.getPosts()
     .subscribe(posts => {
       this.posts = posts;
@@ -28,12 +33,21 @@ export class PostsComponent implements OnInit {
 
   changeState(state, key){
     console.log('Changing state to: '+state);
-    // if(key){
-    //   console.log('Changing key to: '+key);
-    //   this.activeKey = key;
-    // }
     this.appState = state;
   }
+
+  deletePost(posts){
+    console.log("deleting posts")
+    this.postsService.deletePost(posts);
+    this.postsService.getPosts()
+    .subscribe(posts => {
+      this.posts = posts;
+      // console.log(posts);
+    })
+  }
+
+
+  // this.todoService.delete()
 
   article = {
     title: " ",

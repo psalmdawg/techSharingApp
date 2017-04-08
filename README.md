@@ -1,5 +1,8 @@
 # TechshareApp
 
+seed data.
+mongoimport --db techShare --collection posts --drop --file primer-dataset.json
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0.
 
 ## Development server
