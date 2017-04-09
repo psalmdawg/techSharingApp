@@ -1,7 +1,22 @@
+npm install.
+
+App runs with mongoDB.
+
+run the server with node.
+
+node server.js
+
+and in a seperate terminal window, run the ng build command to fire up the app.
+
+ng build -w
+
+
+when both are running app should be accesible on localhost:3000
+
 # TechshareApp
 
 seed data.
-mongoimport --db techShare --collection posts --drop --file primer-dataset.json
+<!-- mongoimport --db techShare --collection posts --drop --file primer-dataset.json -->
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0.
 

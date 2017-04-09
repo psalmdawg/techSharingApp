@@ -4,15 +4,18 @@ import { NgForm } from '@angular/forms';
 import { Posts } from './posts.model';
 import { FormsModule } from '@angular/forms';
 
+// import { Pipe, PipeTransform } from '@angular/core';
+// import { DomSanitizer, SafeResourceUrl, SafeUrl} from '@angular/platform-browser';
+
 
 
 @Component({
   selector: 'app-posts',
   templateUrl: './posts.component.html',
   styleUrls: ['./posts.component.css'],
-  providers: [PostsService]
-})
+  providers: [PostsService],
 
+})
 
 
 export class PostsComponent implements OnInit {

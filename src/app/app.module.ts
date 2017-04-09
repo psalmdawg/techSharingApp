@@ -14,7 +14,7 @@ import { PostsComponent } from './posts/posts.component';
 @NgModule({
   declarations: [
     AppComponent,
-    PostsComponent
+    PostsComponent,
   ],
   imports: [
     BrowserModule,
